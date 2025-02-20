@@ -6,19 +6,19 @@ import pytz
 
 app = Flask(__name__)
 
-@app.route('/htop')  # Make sure this exists!
+@app.route('/htop')  
 def htop():
-    # Get system username
+    
     username = os.getenv("USER") or os.getenv("USERNAME") or "codespace"
 
-    # Get current server time in IST
+    
     ist = pytz.timezone('Asia/Kolkata')
     server_time = datetime.datetime.now(ist).strftime('%Y-%m-%d %H:%M:%S %Z')
 
-    # Get `top` command output
+    
     top_output = subprocess.run(["top", "-bn", "1"], capture_output=True, text=True).stdout
 
-    # Prepare response
+    
     response = f"""
     <pre>
     Name: Yojitha Bondalapati
